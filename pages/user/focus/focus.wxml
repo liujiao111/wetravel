@@ -1,0 +1,35 @@
+
+
+
+        <wux-cell-group style='margin-left:20rpx'>
+            <wux-cell>
+                 <wux-row>
+            <wux-col span="2">
+                <view class="placeholder"><wux-avatar bindtap='toOtherPageIndex' size="large" src="/image/talking1.jpg" /></view>
+            </wux-col>
+            <wux-col span="6">
+                <view style="margin-top:6px" class="placeholder">爱吃鸡翅的鱼  ♂21</view>
+            </wux-col>
+            <wux-col span="4">
+                
+                 <button type="primary" size="mini" plain="false" disabled="{{isFocused}}"
+  bindtap="toFocus" hover-class="other-button-hover">{{focusTip}}</button>
+            </wux-col>
+        </wux-row>
+            </wux-cell>
+
+             <wux-cell>
+                 <wux-row>
+            <wux-col span="2">
+                <view class="placeholder"><wux-avatar bindtap='toOtherPageIndex' size="large" src="/image/talking1.jpg" /></view>
+            </wux-col>
+            <wux-col span="6">
+                <view style="margin-top:6px" class="placeholder">爱吃鸡翅的鱼  ♂21</view>
+            </wux-col>
+            <wux-col span="4" >
+                <button type="primary" style='border-radius:5px' size="mini" plain="false" disabled="{{isFocused}}"
+  bindtap="toFocus" hover-class="other-button-hover">{{focusTip}}</button>
+            </wux-col>
+        </wux-row>
+            </wux-cell>
+        </wux-cell-group>

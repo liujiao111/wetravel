@@ -1,0 +1,59 @@
+<view class='page'>
+<wux-calendar id="wux-calendar" />
+<view class='usercontainer'>
+  <text>{{text}}</text>
+  <!-- slot 插槽 -->
+  <slot name="after"></slot>
+</view>
+
+
+
+
+<wux-cell-group>
+            <wux-cell header='after' isLink bind:click='openChooseImage'>
+              头像
+              <wux-avatar bindtap='openChooseImage'  size="default" src="{{headImage}}" />
+            </wux-cell>
+
+            <wux-cell title='昵称' isLink bind:click='openChooseNikeName' extra='爱吃鸡翅的鱼'> 
+            </wux-cell>
+
+
+            <wux-cell title="地区" extra="{{ area }}"  bind:click="openChooseArea"></wux-cell>
+
+           <wux-popup-select value="{{ selectValue1 }}" options="{{ selectOptions1 }}" data-index="1" bind:confirm="selectOnConfirm" bind:valueChange="selectOnValueChange">
+                <wux-cell title="性别" is-link extra="{{ selectDisplayValue1 }}"></wux-cell>
+            </wux-popup-select>
+
+            <wux-cell title="生日" isLink bind:click='openChooseImage' extra="{{ startTime }}" bind:click="openCalendar">
+            </wux-cell>
+
+             <wux-cell title="标签" isLink bind:click='openChooseTag' extra='背包客/摄影控/学生党'>
+            </wux-cell>
+
+            <wux-cell title="签名" isLink bind:click='openChooseSign' extra='生活不止眼前的苟且，还有诗和远方。'>
+            </wux-cell>
+
+
+            <wux-cell style='margin-left:0rpx' header='after' isLink bind:click='openChooseMultiImage'>
+              照片
+               <view >
+                  <wux-avatar bodyStyle='margin-left:80rpx;height:160rpx;width:136rpx' src='{{image1}}' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='{{image2}}' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='{{image3}}' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='{{image4}}' shape="square" scale size="large">U</wux-avatar>
+              </view>
+            </wux-cell>
+        </wux-cell-group>
+
+        
+
+
+
+        
+</view>
+
+
+<!--地区联动选择框-->
+<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所在地区" options="{{ options1 }}" bind:close="onClose1" bind:change="onChange1" />
+

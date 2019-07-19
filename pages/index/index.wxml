@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="page__bd">
+ <wux-search-bar clear show-cancel value="{{ hehe[0].name }}" controlled placeholder="Search" bind:change="onSearchChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+  </view>
+</view>
+
+<wux-calendar id="wux-calendar" />
+
+
+<wux-popup-select visible="{{ visible }}" controlled value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange" bind:visibleChange="onVisibleChange" />
+
+
+
+<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
+    <include src="../../component/wx-index-list/wx-index-list" />
+</wux-popup>
+
+
+<!-- 下拉菜单 -->
+    <view class='menu-po'>
+        <!-- 导航栏 -->
+        <view class='menu'>
+            <view class='menu-list'>
+                <view class='menu-nav' >
+                    <text id='local' class='menu-text' bindtap="openChooseCity">出发</text>
+                </view>
+
+                <view class='menu-nav' >
+                    <text id='target' class='menu-text' bindtap="openChooseCity">到达</text>
+                </view>
+
+                <view class='menu-nav' >
+                    <text id='start' class='menu-text' bindtap="openCalendar2">{{startTime}}</text>
+                </view>
+
+                <view class='menu-nav' >
+                    <text id='end' class='menu-text' bindtap="openCalendar2">{{endTime}}</text>
+                </view>
+                
+                 <view class='menu-nav' >
+                    
+                    <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+               <wux-cell extra="{{ displayValue1 }}"></wux-cell>
+                </wux-popup-select>
+                </view>
+            </view>
+        </view>
+    </view> 
+
+
+ <wux-divider show-text="{{ false }}" />
+
+
+

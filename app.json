@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user/user",
+    "pages/chat-list/chat-list",
+    "pages/chat/chat",
+    "pages/chat-input/chat-input",
+    "pages/friends/friends",
+    "pages/talking/talking",
+    "pages/talking/detail",
+    "pages/talking/like",
+    "pages/demo/demo",
+    "pages/user/edit/edit",
+    "pages/user/edit/name/name",
+    "pages/user/edit/tag/tag",
+    "pages/user/publish/publish",
+    "pages/user/focus/focus",
+    "pages/user/detail/detail",
+    "component/wx-index-list/wx-index-list"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#35c8fb",
+    "color": "#7f8389",
+    "list": [
+      {
+        "selectedIconPath": "image/star-color.png",
+        "iconPath": "image/star.png",
+        "pagePath": "pages/index/index",
+        "text": "结伴"
+      },
+      {
+        "pagePath": "pages/chat-list/chat-list",
+        "text": "消息",
+        "iconPath": "image/message.png",
+        "selectedIconPath": "image/message-color.png"
+      },
+      {
+        "selectedIconPath": "image/me-color.png",
+        "iconPath": "image/me.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

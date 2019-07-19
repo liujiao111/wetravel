@@ -1,0 +1,12 @@
+
+<view class='page'>
+ <wux-cell-group>
+            <wux-cell hover-class="none">
+                <wux-input clear label="{{editType}}" placeholder="{{}}" />
+            </wux-cell>
+
+            <wux-cell>
+              <i-button bind:click="submitEditVal" type="success" shape="circle" size="small">保存</i-button>
+            </wux-cell>
+        </wux-cell-group>
+</view>

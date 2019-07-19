@@ -1,0 +1,147 @@
+<!--index.wxml-->
+<view class='usercontainer'>
+  <text>{{text}}</text>
+  <!-- slot 插槽 -->
+  <slot name="after"></slot>
+</view>
+
+<view class="usercontainer">
+  <view class="localUserInfo">
+  
+    <button type="primary" size="mini" plain="false" wx:if="{{!haslocalUserInfo && canIUse}}" open-type="getlocalUserInfo" hover-class="other-button-hover" bindgetlocalUserInfo="getlocalUserInfo"> 点此进行登录 </button>
+
+
+    <block wx:else>
+      <image bindtap="toOtherPageIndex" class="localUserInfo-avatar" src="{{localUserInfo.avatarUrl}}" mode="cover"></image>
+      <text class="localUserInfo-nickname">{{localUserInfo.nickName}}</text>
+    </block>
+  </view>
+
+
+
+
+ 
+  
+
+  
+
+</view>
+
+<view class='my-body'>
+
+<wux-cell-group>
+
+<wux-cell  header='after' >
+           <wux-row>
+            <wux-col span="4" >
+                <view class="placeholder"> <wux-icon size = '20' color='#7E7E7E' type="md-home" />  浙江杭州
+                </view>
+            </wux-col>
+            <wux-col span="3" push='1'>
+                <view class="placeholder"> <wux-icon  size = '20' color='#7E7E7E'/>♂ 21岁</view>
+            </wux-col>
+            <wux-col span="3" push='2'>
+                <view class="placeholder"><wux-icon  size = '20' color='#7E7E7E' type="md-list-box" />  摩羯座</view>
+            </wux-col>
+ </wux-row>
+ </wux-cell>
+
+
+
+
+<!--标签-->
+<wux-cell  header='after' >
+            <wux-tag color="#2db7f5">#2db7f5</wux-tag>
+            <wux-tag color="#87d068">#87d068</wux-tag>
+            <wux-tag color="#108ee9">#108ee9</wux-tag>
+ </wux-cell>
+
+
+
+<!--签名-->
+<wux-cell title="签名" isLink bind:click='openChooseImage' extra='生活不止眼前的苟且，还有诗和远方。'>
+            </wux-cell>
+
+<!--照片-->
+
+  <wux-cell header='after' isLink bind:click='toOtherPageIndex'>
+              照片
+               <view >
+                  <wux-avatar bodyStyle='margin-left:80rpx;height:160rpx;width:136rpx' src='/image/talking1.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking1.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking2.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking3.png' shape="square" scale size="large">U</wux-avatar>
+              </view>
+            </wux-cell>
+
+<wux-divider />
+<!--修改资料-->
+
+ <wux-row>
+            <wux-col span="12" style='text-align:center'>
+                <view style='color:green' class="placeholder" bindtap='toEditView'>修改资料</view>
+            </wux-col>
+        </wux-row>
+
+<wux-divider />
+
+<!--我的收藏发布等-->
+
+
+<wux-cell  header='after' >
+           <wux-row>
+            <wux-col span="3">
+                <view class="placeholder">
+                  <wux-avatar bindtap='toMySend' bodyStyle='width:100rpx;height:100rpx' size="large" shape='square' src="../../image/my-send.png" />
+                </view>
+            </wux-col>
+            
+            <wux-col span="3" >
+                <view class="placeholder"> 
+                  <wux-avatar bindtap='toMyCollect' bodyStyle='width:100rpx;height:100rpx' size="large" shape='square' src="../../image/my-collect.png" />
+                </view>
+            </wux-col>
+            <wux-col span="3" >
+                <view class="placeholder">
+                  <wux-avatar bindtap='toMyFocus' bodyStyle='width:100rpx;height:100rpx' size="large" shape='square'  src="../../image/my-focus.png" />
+                </view>
+            </wux-col>
+             <wux-col span="3" >
+                <view class="placeholder"> 
+                 <wux-avatar bindtap='toMyFans' bodyStyle='width:100rpx;height:100rpx' size="large" shape='square'  src="../../image/my-fans.png" />
+                </view>
+            </wux-col>
+        </wux-row>
+ </wux-cell>
+
+
+<wux-cell  header='after' >
+           <wux-row style='margin-top:30rpx'>
+            <wux-col span="3" >
+                <view class="placeholder small-font">
+                  我发布的
+                </view>
+            </wux-col>
+            
+            <wux-col span="3" >
+                <view class="placeholder small-font"> 
+                 我的收藏
+                </view>
+            </wux-col>
+            <wux-col span="3" >
+                <view class="placeholder small-font">
+                  我的关注
+                </view>
+            </wux-col>
+             <wux-col span="3">
+                <view class="placeholder small-font"> 
+                我的粉丝
+                </view>
+            </wux-col>
+        </wux-row>
+ </wux-cell>
+
+
+ </wux-cell-group>
+
+</view>

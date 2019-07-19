@@ -1,0 +1,24 @@
+{
+  "navigationBarTitleText": "点赞列表",
+  "usingComponents": {
+    "i-button": "../../dist/button/index",
+    "i-icon": "../../dist/icon/index",
+    "wux-icon": "../../dist-wux/icon/index",
+    "wux-button": "../../dist-wux/button/index",
+    "wux-search-bar": "../../dist-wux/search-bar/index",
+    "wux-filterbar": "../../dist-wux/filterbar/index",
+    "wux-divider": "../../dist-wux/divider/index",
+    "wux-row": "../../dist-wux/row/index",
+    "wux-col": "../../dist-wux/col/index",
+    "wux-cell-group": "../../dist-wux/cell-group/index",
+    "wux-cell": "../../dist-wux/cell/index",
+    "wux-input": "../../dist-wux/input/index",
+    "wux-textarea": "../../dist-wux/textarea/index",
+    "wux-upload": "../../dist-wux/upload/index",
+    "wux-calendar": "../../dist-wux/calendar/index",
+    "wux-avatar": "../../dist-wux/avatar/index",
+    "wux-image": "../../dist-wux/image/index",
+    "wux-popup": "../../dist-wux/popup/index",
+    "wux-media": "../../dist-wux/media/index"
+  }
+}

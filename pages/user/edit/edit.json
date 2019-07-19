@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "编辑资料",
+  "usingComponents": {
+    "wux-cell-group": "../../../dist-wux/cell-group/index",
+    "wux-cell": "../../../dist-wux/cell/index",
+    "wux-avatar": "../../../dist-wux/avatar/index",
+    "wux-row": "../../../dist-wux/row/index",
+    "wux-col": "../../../dist-wux/col/index",
+    "wux-image": "../../../dist-wux/image/index",
+    "wux-calendar": "../../../dist-wux/calendar/index",
+    "wux-button": "../../../dist-wux/button/index",
+    "wux-popup": "../../../dist-wux/popup/index",
+    "wux-radio-group": "../../../dist-wux/radio-group/index",
+    "wux-form": "../../../dist-wux/form/index",
+    "wux-cascader": "../../../dist-wux/cascader/index",
+    "wux-popup-select": "../../../dist-wux/popup-select/index"
+      }
+}

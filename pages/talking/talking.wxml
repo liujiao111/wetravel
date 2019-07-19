@@ -1,0 +1,25 @@
+<view class="page">
+     <wux-cell-group>
+            <wux-cell thumb="../../image/address.png" title="出发地" extra="" is-link url="/pages/demo/demo" open-type="navigateTo"></wux-cell>
+             <wux-cell thumb="../../image/target.png" title="目的地" extra="" is-link url="/pages/demo/demo" open-type="navigateTo"></wux-cell>
+            <wux-cell thumb="../../image/time.png" title="出发时间" extra="{{ startTime }}" bind:click="openCalendar"></wux-cell>
+
+
+<wux-calendar id="wux-calendar" />
+
+
+                           <wux-cell hover-class="none">
+                <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="请认真介绍下你的行程安排吧。" />
+            </wux-cell>
+        </wux-cell-group>
+        
+       
+ 
+
+ <wux-upload listType="picture-card" fileList="{{ fileList }}" controlled url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
+            <text style='font-size:20px'>+</text>
+        </wux-upload>
+
+       <wux-divider show-text="{{ false }}" />
+       <wux-button block type="balanced">发布</wux-button>
+</view>

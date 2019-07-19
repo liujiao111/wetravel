@@ -1,0 +1,29 @@
+<view>
+       <wux-row>
+            <wux-col span="1">
+                <view class="placeholder"><wux-avatar size="large" bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
+            </wux-col>
+            <wux-col span="7">
+                <view class="placeholder"> <wux-cell label="2019-02-02 02:00:00 发布" title="爱吃鸡翅的鱼    男 21岁"></wux-cell></view>
+            </wux-col>
+            <wux-col span="4">
+                <view  class="placeholder"><i-button bind:click="handleClick" type="success" shape="circle" i-class="my-button" inline = true size="small">+ 关注</i-button></view>
+            </wux-col>
+        </wux-row>
+
+
+<!--已关注的样式-->
+        <wux-row>
+            <wux-col span="1">
+                <view class="placeholder"><wux-avatar size="large" bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
+            </wux-col>
+            <wux-col span="7">
+                <view class="placeholder"> <wux-cell label="2019-02-02 02:00:00 发布" title="爱吃鸡翅的鱼    男 21岁"></wux-cell></view>
+            </wux-col>
+            <wux-col span="4">
+                <view  class="placeholder">
+                 <i-button bind:click="handleClick" type="primary" shape="circle" inline = true size="small" disabled>已关注</i-button>
+                   </view>
+            </wux-col>
+        </wux-row>
+</view>

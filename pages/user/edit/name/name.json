@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "wux-cell-group": "../../../../dist-wux/cell-group/index",
+    "wux-cell": "../../../../dist-wux/cell/index",
+    "wux-input": "../../../../dist-wux/input/index",
+    "i-button": "/dist/button/index"
+  }
+}

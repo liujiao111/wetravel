@@ -1,0 +1,44 @@
+/* pages/talking/detail.wxss */
+
+.margin-detail{
+  margin-left:10px;
+  margin-right: 10rpx;
+  color:#555E6F
+}
+
+.small-font{
+  font-size:29rpx;
+  color: grey
+} 
+
+.green-font {
+  color: #1EB249
+}
+
+
+
+.circle-search{
+  border-radius: 5rpx;
+}
+
+.reply{
+  width:80%;margin-left:20%; background-color:#F2F3F5;
+  font-size:29rpx;
+  color: grey
+}
+.currentComment{
+  margin-left:20%;
+  margin-top:5rpx;
+  color: grey
+}
+
+.tr-input{
+  border:2rpx;
+  height:20%;
+  margin-left: 20%;
+  border-color:#000000;
+   border-bottom-left-radius: 5px;
+ border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+ border-top-right-radius: 5px;
+}

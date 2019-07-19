@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "修改标签",
+  "usingComponents": {
+    "wux-tag": "../../../../dist-wux/tag/index",
+    "wux-divider": "../../../../dist-wux/divider/index",
+    "i-button": "../../../../dist/button/index"
+  }
+}

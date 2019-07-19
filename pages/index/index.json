@@ -1,0 +1,20 @@
+{
+  "usingComponents": {
+
+    "wux-icon": "../../dist-wux/icon/index",
+    "wux-search-bar": "../../dist-wux/search-bar/index",
+    "wux-filterbar": "../../dist-wux/filterbar/index",
+    "wux-divider": "../../dist-wux/divider/index",
+    "wux-row": "../../dist-wux/row/index",
+    "wux-col": "../../dist-wux/col/index",
+    "wux-cell-group": "../../dist-wux/cell-group/index",
+    "wux-cell": "../../dist-wux/cell/index",
+    "wux-button": "../../dist-wux/button/index",
+    "wux-popup": "../../dist-wux/popup/index",
+    "wux-calendar": "../../dist-wux/calendar/index",
+    "wux-popup-select": "../../dist-wux/popup-select/index"
+    
+    
+  }
+  
+}

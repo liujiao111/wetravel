@@ -1,0 +1,24 @@
+<wux-cell-group>
+
+ <wux-cell>
+  <wux-tag closable bind:click="onAddTag">+ 自定义</wux-tag>
+   <wux-tag closable bind:close="onTagClose">Tag 1</wux-tag>
+    <wux-tag closable bind:close="onTagClose">Tag 2</wux-tag>
+     <wux-tag closable bind:close="onTagClose">Tag 3</wux-tag>
+      <wux-tag closable bind:close="onTagClose">Tag 4</wux-tag>
+ </wux-cell>
+
+<wux-divider show-text="{{ false }}" />
+
+<wux-cell >
+            <wux-tag color="#2db7f5">暖男</wux-tag>
+            <wux-tag color="#87d068">小哥哥</wux-tag>
+            <wux-tag color="#108ee9">逗逼</wux-tag>
+            <wux-tag color="#2db7f5">铲屎官</wux-tag>
+ </wux-cell>
+
+ <wux-cell>
+              <i-button bind:click="submitEditTag" type="success" shape="circle" size="small">保存</i-button>
+            </wux-cell>
+
+</wux-cell-group>

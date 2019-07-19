@@ -1,0 +1,198 @@
+<!--index.wxml-->
+<view class='usercontainer'>
+  <text>{{text}}</text>
+  <!-- slot 插槽 -->
+  <slot name="after"></slot>
+</view>
+
+<view class="usercontainer">
+  <view class="userinfo">
+  
+    <block>
+      <image class="userinfo-avatar" src="/image/aa.jpg" mode="cover"></image>
+      <text class="userinfo-nickname">{{nickName}}</text>
+    </block>
+  </view>
+
+
+
+
+ 
+  
+
+  
+
+</view>
+
+<view class='my-body'>
+
+<wux-cell-group>
+
+<wux-cell  header='after' >
+           <wux-row>
+            <wux-col span="4" >
+                <view class="placeholder"> <wux-icon size = '20' color='#7E7E7E' type="md-home" />  浙江杭州
+                </view>
+            </wux-col>
+            <wux-col span="3" push='1'>
+                <view class="placeholder"> <wux-icon  size = '20' color='#7E7E7E'/>♂ 21岁</view>
+            </wux-col>
+            <wux-col span="3" push='2'>
+                <view class="placeholder"><wux-icon  size = '20' color='#7E7E7E' type="md-list-box" />  摩羯座</view>
+            </wux-col>
+ </wux-row>
+ </wux-cell>
+
+
+
+
+<!--标签-->
+<wux-cell  header='after' >
+            <wux-tag color="#2db7f5">#2db7f5</wux-tag>
+            <wux-tag color="#87d068">#87d068</wux-tag>
+            <wux-tag color="#108ee9">#108ee9</wux-tag>
+ </wux-cell>
+
+
+
+<!--签名-->
+<wux-cell title="签名" isLink bind:click='openChooseImage' extra='生活不止眼前的苟且，还有诗和远方。'>
+            </wux-cell>
+
+<!--照片-->
+
+  <wux-cell header='after' isLink bind:click='toOtherPageIndex'>
+              照片
+               <view >
+                  <wux-avatar bodyStyle='margin-left:80rpx;height:160rpx;width:136rpx' src='/image/talking1.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking1.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking2.png' shape="square" scale size="large">U</wux-avatar>
+                  <wux-avatar bodyStyle='margin-left:5rpx;height:160rpx;width:136rpx' src='/image/talking3.png' shape="square" scale size="large">U</wux-avatar>
+              </view>
+            </wux-cell>
+
+
+
+
+ </wux-cell-group>
+
+
+ <!--一条动态-->
+ <view class="page margin-detail">
+
+  
+       <wux-row>
+            <wux-col span="1">
+                <view class="placeholder"><wux-avatar size="large"  bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
+            </wux-col>
+            <wux-col span="7">
+                <view class="placeholder"> <wux-cell label="2019-02-02 02:00:00 发布" title="爱吃鸡翅的鱼    男 21岁"></wux-cell></view>
+            </wux-col>
+            <wux-col span="4">
+                <view hidden="{{isNeedFocus}}" class="placeholder"><i-button  bind:click="handleClick" type="success" shape="circle" i-class="my-button" inline = true size="small">+ 关注</i-button></view>
+            </wux-col>
+        </wux-row>
+
+      <view class="small-font">路线：杭州 -> 深圳</view>
+ <view  class="small-font">出发时间 ： 2019-03-01</view>
+<wux-divider />
+
+<view>
+在风起云涌、亦真亦幻的武侠电影世界，《龙门客栈》是一面不倒的旗帜。
+
+现在让我们跟随唆了蜜的步伐，走进江湖看看......
+
+故事发生在旧朝既没，新朝崛起。本朝皇帝从侄儿手中篡权称帝。皇权易
+
+主，人心惶惶，两大特务机构锦衣卫与御前侍卫明争暗斗，江湖上腥风血雨，战斗不止，一种惶恐的气氛时时萦绕在前朝后宫。
+
+一个月黑风高的夜晚，戒备森严的皇城中，一黑衣人潜入皇宫，盗得皇帝宝物九龙杯，留下一封信。
+
+• 欲想取回九龙杯，明日辰时来龙门客栈一叙
+
+哈哈～
+
+是不是还想知道后面发生了什么样的故事和情节呢？
+
+那就快来唆了蜜吧！！！唆了蜜不仅给你准备了特色主题团建内容，而且还有超一流的服务，保证让你的团建日更舒心，更开心！！！
+
+在服务上，我们有专业团建主持人1对1贴身指导设计企业团建流程
+
+• 企业定制化服务，定制化流程，完美融合企业文化和员工属性
+
+• 贴心满意的服务理念，活动方案修改到满意为止
+
+• 游戏环节丰富，定期更新，唆了蜜团建丰富的游戏库
+
+• 完善的后续服务及客户反馈体系
+
+在内容上，我们不仅有脑洞大开的故事，而且有新颖的环节设计。争取让公司的团建日成为每一位员工人人喜欢的日子。
+
+选择唆了蜜，选择快乐团建！
+
+风里，雨里，唆了蜜永远等你！
+</view>
+
+
+
+<wux-grids>
+            <wux-grid square='true'>
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+            </wux-grid>
+             <wux-grid square='true' >
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+            </wux-grid>
+             <wux-grid  square='true'>
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+            </wux-grid>
+
+            <wux-grid  square='true'>
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+            </wux-grid>
+             <wux-grid  square='true'>
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+            </wux-grid>
+             <wux-grid  square='true'>
+              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+            </wux-grid>
+            
+        </wux-grids>
+
+
+<wux-row>
+                              <wux-col span="2" >
+                                  <view class="placeholder"><i-icon type="coordinates" /> 杭州</view>
+                              </wux-col>
+                              <wux-col span="3" >
+                                  <view class="placeholder"><i-icon type="coordinates" /> 2.01KM</view>
+                              </wux-col>
+                              <wux-col span="1" >
+                              </wux-col>
+                              <wux-col span="2" >
+                              </wux-col>
+                              <wux-col span="2" bindtap='toTalkingDetail'>
+                                  <view class="placeholder"><i-icon color = 'green' type='message'/> 6</view>
+                              </wux-col>
+                              <wux-col span="2">
+                                  <view class="placeholder"><i-icon color='green' type='praise'/> 4</view>
+                              </wux-col>
+                          </wux-row>
+
+
+
+</view>
+
+
+
+
+
+     <wux-divider>
+            <view class="loadmore">
+                <view class="loading"></view>
+                <text class="text">已经到底啦</text>
+            </view>
+        </wux-divider>
+
+
+
+</view>
