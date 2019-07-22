@@ -1,1 +1,8 @@
 /* pages/user/publish/publish.wxss */
+
+.margin-detail{
+  margin-left: 20rpx;
+   margin-right: 20rpx;
+   font-size: 32rpx;
+   color: #808080
+}

@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<view class="page">
 <view class='usercontainer'>
   <text>{{text}}</text>
   <!-- slot 插槽 -->
@@ -14,6 +15,8 @@
     </block>
   </view>
 
+  </view>
+
 
 
 
@@ -22,9 +25,8 @@
 
   
 
-</view>
 
-<view class='my-body'>
+
 
 <wux-cell-group>
 
@@ -78,7 +80,7 @@
 
 
  <!--一条动态-->
- <view class="page margin-detail">
+ 
 
   
        <wux-row>
@@ -134,26 +136,25 @@
 </view>
 
 
-
 <wux-grids>
             <wux-grid square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image style="width: 33%; height: 33%; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid square='true' >
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image style="width: 33%; height: 33%; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image style="width: 33%; height: 33%; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
             </wux-grid>
 
             <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
             </wux-grid>
             
         </wux-grids>
@@ -180,7 +181,6 @@
 
 
 
-</view>
 
 
 
@@ -192,6 +192,8 @@
                 <text class="text">已经到底啦</text>
             </view>
         </wux-divider>
+
+
 
 
 

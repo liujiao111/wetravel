@@ -1,4 +1,11 @@
 /**index.wxss**/
+.page{
+margin-left: 20rpx;
+   margin-right: 20rpx;
+   font-size: 32rpx;
+   color: #808080
+}
+
 .usercontainer {
   height: 100%;
   display: flex;

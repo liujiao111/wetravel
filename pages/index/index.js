@@ -12,14 +12,22 @@ Page({
     displayValue1: '最新',
     options1: ['最新发表', '最近出发', '热门结伴', '附近结伴'],
     startTime:'开始时间',
-    endTime:'结束时间'
+    endTime:'结束时间',
+    startCity:'出发',
+    targetCity:'到达'
   },
 
 /**
  * 选择城市
  */
-  openChooseCity:function(){
+  openChooseCity:function(e){
+    var eventId = e.currentTarget.id
+      wx.navigateTo({
+        url: '../city/city?type=' + eventId,
+        success:function(e){
 
+        }
+      })
   },
 
   setValue(values, key) {
@@ -82,14 +90,21 @@ Page({
     $wuxCalendar().open({
       value: this.data.value2,
       onChange: (values, displayValues) => {
-        console.log('onChange', values, displayValues)
+        console.log('onChange', eventId, values, displayValues)
+        if (displayValues == null || displayValues == "") {
+          return
+        }
         if (eventId == "start") {
+          if (displayValues == null || displayValues == "") {
+            return
+          }
             this.setData({
               value2: displayValues,
               startTime: displayValues
             })
         }
         if (eventId == "end") {
+          console.log(displayValues)
           this.setData({
             value2: displayValues,
             endTime: displayValues
@@ -105,11 +120,6 @@ Page({
   },
 
 
-  openChooseCity() {
-    this.setData({
-      visible2: true,
-    })
-  },
   close2() {
     this.setData({
       visible2: false,

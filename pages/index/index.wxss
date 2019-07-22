@@ -1,5 +1,11 @@
   /* 下拉菜单 */
 /* 下拉菜单导航 */
+.page{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+   color: #808080
+}
 .menu-po{
     position: relative;
     left: 0;

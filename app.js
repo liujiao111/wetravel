@@ -10,6 +10,7 @@ App({
         return this.appIMDelegate.getIMHandlerDelegate();
     },
     onLaunch(options) {
+      console.log('start')
         this.appIMDelegate = new AppIMDelegate(this);
         this.appIMDelegate.onLaunch(options);
 

@@ -16,7 +16,7 @@
 
       <view class="small-font">路线：杭州 -> 深圳</view>
  <view  class="small-font">出发时间 ： 2019-03-01</view>
-<wux-divider />
+ <wux-divider show-text="{{ false }}" />
 
 <view>
 在风起云涌、亦真亦幻的武侠电影世界，《龙门客栈》是一面不倒的旗帜。
@@ -58,23 +58,23 @@
 
 <wux-grids>
             <wux-grid square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid square='true' >
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
             </wux-grid>
 
             <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 120px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
             </wux-grid>
             
         </wux-grids>
@@ -99,20 +99,17 @@
                               </wux-col>
                           </wux-row>
 
-
-
-</view>
-
-
-
-
-
-     <wux-divider>
+    <wux-divider>
             <view class="loadmore">
                 <view class="loading"></view>
                 <text class="text">已经到底啦</text>
             </view>
         </wux-divider>
+
+</view>
+
+
+
 
 
 

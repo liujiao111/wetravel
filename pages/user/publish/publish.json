@@ -19,9 +19,7 @@
       "wux-avatar": "../../../dist-wux/avatar/index",
       "wux-image": "../../../dist-wux/image/index",
       "wux-popup": "../../../dist-wux/popup/index",
-      "wux-media": "../../../dist-wux/media/index",
-      "wux-grids": "../../../dist-wux/grids/index",
-      "wux-grid": "../../../dist-wux/grid/index"
+      "wux-media": "../../../dist-wux/media/index"
     
   }
 }

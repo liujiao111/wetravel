@@ -1,4 +1,8 @@
 /**index.wxss**/
+.page{
+   font-size: 32rpx;
+   color: #808080
+}
 
 .userinfo {
   display: flex;

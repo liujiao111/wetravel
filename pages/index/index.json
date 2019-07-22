@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-
+"i-button": "../../../dist/button/index",
+"i-icon": "../../../dist/icon/index",
     "wux-icon": "../../dist-wux/icon/index",
     "wux-search-bar": "../../dist-wux/search-bar/index",
     "wux-filterbar": "../../dist-wux/filterbar/index",
@@ -12,7 +13,8 @@
     "wux-button": "../../dist-wux/button/index",
     "wux-popup": "../../dist-wux/popup/index",
     "wux-calendar": "../../dist-wux/calendar/index",
-    "wux-popup-select": "../../dist-wux/popup-select/index"
+    "wux-popup-select": "../../dist-wux/popup-select/index",
+    "wux-avatar": "../../../dist-wux/avatar/index"
     
     
   }
