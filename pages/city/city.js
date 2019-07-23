@@ -14,6 +14,8 @@ Page({
       
     },
     pageType: "local", //页面类型，local是出发地，target是到达目的地
+    startCityType : '开始日期',
+
   },
   onLoad(options) {
     this.setData({
@@ -33,6 +35,7 @@ Page({
 
   },
   bindtap(e) {
+    var that = this
     var city = JSON.stringify(e.detail)
     console.log('选择了城市' + city)
     var pages = getCurrentPages();
@@ -41,12 +44,28 @@ Page({
       prevPage.setData({
         startCity: e.detail.name,
       })
+      
     } else{
       prevPage.setData({
         targetCity: e.detail.name,
       })
+      console.log(that.startCityType)
+      if (that.startCityType != '') {
+        wx.navigateBack({
+          delta: 1,
+          success: function () {
+            var params = {
+              startCity: that.startCityType,
+              targetCity: e.detail.name
+            }
+            prevPage.onLoad(params)
+          }
+        })
+      } 
+
+
     }
-    
+
     wx.navigateBack({
       delta: 1,
     })

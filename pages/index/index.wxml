@@ -1,6 +1,6 @@
 <view class="page">
   <view class="page__bd">
- <wux-search-bar clear show-cancel value="{{ hehe[0].name }}" controlled placeholder="Search" bind:change="onSearchChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+ <wux-search-bar value='{{searchInput}}' clear show-cancel controlled placeholder="Search" bind:change="onSearchChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
   </view>
 
 
@@ -42,66 +42,42 @@
     </view> 
 
 
- <wux-divider show-text="{{ false }}" />
 
 
 
 <!--一条完整的动态-->
-<view class="talking">
+<view class="talking" wx:for='{{talkingList}}'>
+ <wux-divider show-text="{{ false }}" />
+
 <wux-row>
             <wux-col span="1">
                 <view class="placeholder"><wux-avatar size="large"  bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
             </wux-col>
             <wux-col span="7">
-                <view class="placeholder"> <wux-cell label="2019-02-02 02:00:00 发布" title="爱吃鸡翅的鱼    男 21岁"></wux-cell></view>
+                <view class="placeholder">
+                  <wux-cell label="{{item.createTime}}发布" wx:if="{{item.gender == 0}}" title=" {{ item.userName }}     ♀    {{item.age}}   "> </wux-cell>
+                  <wux-cell label="{{item.createTime}}发布" wx:if="{{item.gender == 1}}" title=" {{ item.userName }}     ♂    {{item.age}}   "> </wux-cell>
+                
+                </view>
             </wux-col>
             <wux-col span="4">
-                <view hidden="{{isNeedFocus}}" class="placeholder"><i-button  bind:click="handleClick" type="success" shape="circle" i-class="my-button" inline = true size="small">+ 关注</i-button></view>
+                <view class="placeholder">
+                    <i-button wx:if='{{item.yourFocus == true}}' disabled = '{{item.yourFocus}}' bind:click="handleClick" type="success" shape="circle" i-class="my-button" inline = true size="small">已关注 </i-button>
+                    <i-button wx:if='{{item.yourFocus == false}}' disabled = '{{item.yourFocus}}' bind:click="handleClick" type="success" shape="circle" i-class="my-button" inline = true size="small">+ 关注 </i-button>
+                </view>
             </wux-col>
         </wux-row>
 
-     <view>路线：<text class="detailinfo">杭州 -> 深圳</text></view>
-     <view>出发时间：<text class="detailinfo">2019-03-01</text></view>
+     <view>路线：<text class="detailinfo">{{item.startCity}} -> {{item.targetCity}}</text></view>
+     <view>出发时间：<text class="detailinfo">{{item.startTime}}</text></view>
  <wux-divider show-text="{{ false }}" />
 
 <view>
-在风起云涌、亦真亦幻的武侠电影世界，《龙门客栈》是一面不倒的旗帜。
-
-现在让我们跟随唆了蜜的步伐，走进江湖看看......
-
-故事发生在旧朝既没，新朝崛起。本朝皇帝从侄儿手中篡权称帝。皇权易
-
-主，人心惶惶，两大特务机构锦衣卫与御前侍卫明争暗斗，江湖上腥风血雨，战斗不止，一种惶恐的气氛时时萦绕在前朝后宫。
-
-一个月黑风高的夜晚，戒备森严的皇城中，一黑衣人潜入皇宫，盗得皇帝宝物九龙杯，留下一封信。
-
-• 欲想取回九龙杯，明日辰时来龙门客栈一叙
-
-哈哈～
-
-是不是还想知道后面发生了什么样的故事和情节呢？
-
-那就快来唆了蜜吧！！！唆了蜜不仅给你准备了特色主题团建内容，而且还有超一流的服务，保证让你的团建日更舒心，更开心！！！
-
-在服务上，我们有专业团建主持人1对1贴身指导设计企业团建流程
-
-• 企业定制化服务，定制化流程，完美融合企业文化和员工属性
-
-• 贴心满意的服务理念，活动方案修改到满意为止
-
-• 游戏环节丰富，定期更新，唆了蜜团建丰富的游戏库
-
-• 完善的后续服务及客户反馈体系
-
-在内容上，我们不仅有脑洞大开的故事，而且有新颖的环节设计。争取让公司的团建日成为每一位员工人人喜欢的日子。
-
-选择唆了蜜，选择快乐团建！
-
-风里，雨里，唆了蜜永远等你！
+{{item.content}}
 </view>
 
 
-
+<wux-divider show-text="{{ false }}" />
 <wux-grids>
             <wux-grid square='true'>
               <image class="talkingimage" src="/image/talking1.jpg"></image>
@@ -128,20 +104,20 @@
  <wux-divider show-text="{{ false }}" />
 <wux-row>
                               <wux-col span="2" >
-                                  <view class="placeholder"><i-icon type="coordinates" /> 杭州</view>
+                                  <view class="placeholder"><i-icon type="coordinates" /> {{item.startCity}}</view>
                               </wux-col>
                               <wux-col span="3" >
-                                  <view class="placeholder"><i-icon type="coordinates" /> 2.01KM</view>
+                                  <view class="placeholder"><i-icon type="coordinates" /> {{ item.distance }}KM</view>
                               </wux-col>
                               <wux-col span="1" >
                               </wux-col>
                               <wux-col span="2" >
                               </wux-col>
                               <wux-col span="2">
-                                  <view class="placeholder"><i-icon color = 'green' type='message'/> 6</view>
+                                  <view class="placeholder"><i-icon color = 'green' type='message'/>  {{item.commentCount}}</view>
                               </wux-col>
                               <wux-col span="2">
-                                  <view class="placeholder"><i-icon color='green' type='praise'/> 4</view>
+                                  <view class="placeholder"><i-icon color='green' type='praise'/>   {{item.likeCount}}</view>
                               </wux-col>
                           </wux-row>
 </view>

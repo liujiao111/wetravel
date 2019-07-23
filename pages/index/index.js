@@ -14,7 +14,10 @@ Page({
     startTime:'开始时间',
     endTime:'结束时间',
     startCity:'出发',
-    targetCity:'到达'
+    targetCity:'到达',
+    talkingList:[],
+    searchInput: '',
+
   },
 
 /**
@@ -22,8 +25,12 @@ Page({
  */
   openChooseCity:function(e){
     var eventId = e.currentTarget.id
+    var startCityType = this.startCity
+    if (this.startCity == '出发') {
+      startCityType = ''
+    }
       wx.navigateTo({
-        url: '../city/city?type=' + eventId,
+        url: '../city/city?type=' + eventId + '&startCity=' + startCityType,
         success:function(e){
 
         }
@@ -39,7 +46,19 @@ Page({
   onConfirm(e) {
     const { index } = e.currentTarget.dataset
     this.setValue(e.detail, index)
-    console.log(`onConfirm${index}`, e.detail)
+    var keyword = e.detail.value
+    console.log('确认搜索')
+
+    var params = {
+      content: keyword
+    }
+    this.searchTalkingByParams(params)
+  },
+  /**
+   * 获取页面上的所有搜索请求参数
+   */
+  getSearchParams() {
+
   },
   onValueChange(e) {
     const { index } = e.currentTarget.dataset
@@ -85,6 +104,9 @@ Page({
     };
   },
 
+/**
+ * 日期选择
+ */
   openCalendar2(e) {
     var eventId=e.currentTarget.id
     $wuxCalendar().open({
@@ -140,4 +162,64 @@ Page({
       url: '../talking/talking',
     })
   },
-});
+
+/**
+ * 页面初始化，加载动态数据
+ */
+  onLoad:function(params) {
+    console.log(params)
+    this.searchTalkingByParams(params)
+  },
+
+/**
+ * 根据条件查询动态
+ */
+searchTalkingByParams : function(params) {
+  console.log(params)
+  var that = this
+  wx.request({
+    url: 'http://localhost:8088/talking/page',
+    data: params,
+    method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    header: {
+      'content-type': 'application/json'
+    },// 设置请求的 header
+    success: function (res) {
+      if (res.statusCode == 200) {
+        var code = res.data.code
+        var data = res.data.data
+        console.log(data)
+        if (code) {
+          var items = data.items
+          that.setData({
+            talkingList: items
+          })
+        }
+      } else {
+        console.log("index.js wx.request CheckCallUser statusCode" + res.statusCode);
+      }
+    },
+    fail: function () {
+      console.log("index.js wx.request CheckCallUser fail");
+    },
+    complete: function () {
+      console.log('complete')
+    }
+  })
+
+},
+
+
+/**
+ * 搜索框输入清空
+ */
+  onCancel : function() {
+    console.log("删除")
+    this.setData({
+      searchInput: ''
+    })
+  },
+
+
+
+})
