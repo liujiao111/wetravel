@@ -47,6 +47,7 @@
 
 
 <!--一条完整的动态-->
+<view class="talking">
 <wux-row>
             <wux-col span="1">
                 <view class="placeholder"><wux-avatar size="large"  bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
@@ -59,8 +60,8 @@
             </wux-col>
         </wux-row>
 
-      <view class="small-font">路线：杭州 -> 深圳</view>
- <view  class="small-font">出发时间 ： 2019-03-01</view>
+     <view>路线：<text class="detailinfo">杭州 -> 深圳</text></view>
+     <view>出发时间：<text class="detailinfo">2019-03-01</text></view>
  <wux-divider show-text="{{ false }}" />
 
 <view>
@@ -103,28 +104,28 @@
 
 <wux-grids>
             <wux-grid square='true'>
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image class="talkingimage" src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid square='true' >
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image class='talkingimage' src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image class='talkingimage' src="/image/talking3.jpg"></image>
             </wux-grid>
 
             <wux-grid  square='true'>
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking1.jpg"></image>
+              <image class='talkingimage' src="/image/talking1.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking2.jpg"></image>
+              <image class='talkingimage' src="/image/talking2.jpg"></image>
             </wux-grid>
              <wux-grid  square='true'>
-              <image style="width: 100px; height: 100px; background-color: #eeeeee;" src="/image/talking3.jpg"></image>
+              <image class='talkingimage' src="/image/talking3.jpg"></image>
             </wux-grid>
             
         </wux-grids>
 
-
+ <wux-divider show-text="{{ false }}" />
 <wux-row>
                               <wux-col span="2" >
                                   <view class="placeholder"><i-icon type="coordinates" /> 杭州</view>
@@ -143,7 +144,7 @@
                                   <view class="placeholder"><i-icon color='green' type='praise'/> 4</view>
                               </wux-col>
                           </wux-row>
-
+</view>
 
 
 
@@ -158,4 +159,7 @@
         </wux-divider>
 
 
+  
+  <!--右下角的新增动态-->
+<i-icon style="position: fixed;bottom: 0;margin-left:80%" type="editor" bindtap="toSendTalking" size="39" color="#2BA246" />
 </view>

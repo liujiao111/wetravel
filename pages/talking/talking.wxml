@@ -1,7 +1,7 @@
 <view class="page">
      <wux-cell-group>
-            <wux-cell thumb="../../image/address.png" title="出发地" extra="" is-link url="/pages/demo/demo" open-type="navigateTo"></wux-cell>
-             <wux-cell thumb="../../image/target.png" title="目的地" extra="" is-link url="/pages/demo/demo" open-type="navigateTo"></wux-cell>
+            <wux-cell thumb="../../image/address.png" title="出发地" extra="{{startCity}}" is-link url="/pages/city/city?type=local" open-type="navigateTo"></wux-cell>
+             <wux-cell thumb="../../image/target.png" title="目的地" extra="{{targetCity}}" is-link url="/pages/city/city?type=target" open-type="navigateTo"></wux-cell>
             <wux-cell thumb="../../image/time.png" title="出发时间" extra="{{ startTime }}" bind:click="openCalendar"></wux-cell>
 
 

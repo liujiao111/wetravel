@@ -134,4 +134,10 @@ Page({
   onClose2() {
     this.onClose('visible2')
   },
+
+  toSendTalking:function(){
+    wx.navigateTo({
+      url: '../talking/talking',
+    })
+  },
 });
