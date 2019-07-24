@@ -1,13 +1,10 @@
 <view class="page">
   <view class="page__bd">
- <wux-search-bar value='{{searchInput}}' clear show-cancel controlled placeholder="Search" bind:change="onSearchChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+ <wux-search-bar value='{{searchInput}}' clear show-cancel controlled placeholder="Search" bind:change="onSearchChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirmSearch" bind:clear="onClear" bind:cancel="onCancel" />
   </view>
 
 
 <wux-calendar id="wux-calendar" />
-
-
-<wux-popup-select visible="{{ visible }}" controlled value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange" bind:visibleChange="onVisibleChange" />
 
 
 <!-- 下拉菜单 -->
@@ -16,7 +13,7 @@
         <view class='menu'>
             <view class='menu-list'>
                 <view class='menu-nav' >
-                    <text id='local' class='menu-text' bindtap="openChooseCity">{{startCity}}</text>
+                    <text id='local' class='menu-text' bindtap="openChooseCity">{{startCity}} </text>
                 </view>
 
                 <view class='menu-nav' >
@@ -33,7 +30,7 @@
                 
                  <view class='menu-nav' >
                     
-                    <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                    <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirmChangeSort" bind:valueChange="onValueChange">
                <wux-cell extra="{{ displayValue1 }}"></wux-cell>
                 </wux-popup-select>
                 </view>
@@ -46,7 +43,7 @@
 
 
 <!--一条完整的动态-->
-<view class="talking" wx:for='{{talkingList}}'>
+<view class="talking" wx:for='{{talkingList}}' wx:for-item="item" >
  <wux-divider show-text="{{ false }}" />
 
 <wux-row>
@@ -114,10 +111,10 @@
                               <wux-col span="2" >
                               </wux-col>
                               <wux-col span="2">
-                                  <view class="placeholder"><i-icon color = 'green' type='message'/>  {{item.commentCount}}</view>
+                                  <view bindtap="toTalkingDetailPage" data-tkid='{{item.id}}' class="placeholder"><i-icon color = 'green' type='message'/>  {{item.commentCount}}</view>
                               </wux-col>
                               <wux-col span="2">
-                                  <view class="placeholder"><i-icon color='green' type='praise'/>   {{item.likeCount}}</view>
+                                  <view bindtap="giveLike" data-tkid='{{item.id}}' class="placeholder"><i-icon color='green' type='praise'/>   {{item.likeCount}}</view>
                               </wux-col>
                           </wux-row>
 </view>

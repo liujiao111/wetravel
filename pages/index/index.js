@@ -4,11 +4,13 @@ import { $wuxCalendar } from '../../dist-wux/index'
 Page({
   /* 页面的初始数据*/
   data: {
+    startDefaultTime: [],
+    endDefaultTime: [],
     value2: [],
-    // 获取设备高度
+    // 获取设备高度s
     appHeight: '',
     visible2: false,
-    value1: '',
+    value1: ['createTime', 'distance', 'hot', 'local'],
     displayValue1: '最新',
     options1: ['最新发表', '最近出发', '热门结伴', '附近结伴'],
     startTime:'开始时间',
@@ -43,7 +45,10 @@ Page({
       [`displayValue${key}`]: values.label,
     })
   },
-  onConfirm(e) {
+  /**
+   * 确认搜索
+   */
+  onConfirmSearch(e) {
     const { index } = e.currentTarget.dataset
     this.setValue(e.detail, index)
     var keyword = e.detail.value
@@ -52,6 +57,32 @@ Page({
     var params = {
       content: keyword
     }
+    this.searchTalkingByParams(params)
+  },
+
+/**
+ * 排序字段更新确认
+ */
+  onConfirmChangeSort:function(e) {
+    const { index } = e.currentTarget.dataset
+    this.setValue(e.detail, index)
+    console.log(`确认选择${index}`, e.detail)
+
+    var sortField = e.detail.value
+    var sendSortField = 'createTime'
+    if (sortField == '最近出发') {
+      sendSortField = 'distance'
+    } else if (sortField = '热门结伴') {
+      sendSortField = 'hot'
+    } else if (sortField = '附近结伴') {
+      sendSortField = 'distance'
+    }
+    console.log('排序字段：' + sendSortField)
+    var params = {
+      "sortType" : 1,
+      "sortField": sendSortField
+    }
+
     this.searchTalkingByParams(params)
   },
   /**
@@ -109,8 +140,13 @@ Page({
  */
   openCalendar2(e) {
     var eventId=e.currentTarget.id
+    var that = this
+    var defaultTime = that.data.startDefaultTime
+    if (eventId == "end") {
+      defaultTime = that.data.endDefaultTime
+    }
     $wuxCalendar().open({
-      value: this.data.value2,
+      value: defaultTime,
       onChange: (values, displayValues) => {
         console.log('onChange', eventId, values, displayValues)
         if (displayValues == null || displayValues == "") {
@@ -120,17 +156,30 @@ Page({
           if (displayValues == null || displayValues == "") {
             return
           }
-            this.setData({
-              value2: displayValues,
+          that.setData({
+            startDefaultTime: displayValues,
               startTime: displayValues
             })
         }
         if (eventId == "end") {
+          console.log('为end赋值')
           console.log(displayValues)
-          this.setData({
-            value2: displayValues,
+          that.setData({
+            endDefaultTime: displayValues,
             endTime: displayValues
           })
+
+          
+          var startTimeVal = that.data.startTime
+          var endTimeVal = that.data.endTime
+          if (startTimeVal != '开始时间' && startTimeVal != '' && endTimeVal != '结束时间' && endTimeVal != '') {
+              //执行搜索
+              var params = {
+                "startTimeStart": startTimeVal[0],
+                "startTimeEnd": endTimeVal[0]
+              }
+              that.searchTalkingByParams(params)
+          }
         }
         
       },
@@ -198,6 +247,7 @@ searchTalkingByParams : function(params) {
       } else {
         console.log("index.js wx.request CheckCallUser statusCode" + res.statusCode);
       }
+      console.log('数据刷新成功')
     },
     fail: function () {
       console.log("index.js wx.request CheckCallUser fail");
@@ -220,6 +270,25 @@ searchTalkingByParams : function(params) {
     })
   },
 
+
+/**
+ * 跳转到动态详情页
+ */
+  toTalkingDetailPage:function(e) {
+    var id = e.currentTarget.dataset.tkid
+    console.log(id)
+    wx.navigateTo({
+      url: '../talking/detail?id=' + id,
+    })
+  },
+
+/**
+ * 点赞
+ */
+  giveLike:function(e) {
+    var id = e.currentTarget.dataset.tkid
+    console.log(id)
+  },
 
 
 })

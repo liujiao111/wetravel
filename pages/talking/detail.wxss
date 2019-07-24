@@ -42,3 +42,23 @@
   border-bottom-right-radius: 5px;
  border-top-right-radius: 5px;
 }
+
+
+
+.detailinfo{
+  font: PingFangSC-Regular;
+  font-size: 30rpx;
+  color:#10BB44;
+}
+
+.talking{
+  font: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.talkingimage{
+  margin-right: 8rpx;
+  width: 227rpx;
+  height: 227rpx;
+}
