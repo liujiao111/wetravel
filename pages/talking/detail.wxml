@@ -57,29 +57,24 @@
             
         </wux-grids>
 
+
  <wux-divider show-text="{{ false }}" />
-
-</view>
-
-
-<wux-divider />
 
 <!--点赞列表-->
  <wux-row bindtap='toLikeListView'>
-            <wux-col span="10">
+            <wux-col span="9">
                 <view class="placeholder">
                   <wux-avatar size="default" src="../../image/person1.png" />
                   <wux-avatar size="default" src="../../image/person2.png" />
                   <wux-avatar size="default" src="../../image/person3.png" />
                 </view>
             </wux-col>
-            <wux-col span="2">
-                <view class="placeholder">赞 5 >  </view>
+            <wux-col span="3">
+                <view class="placeholder">赞 {{talking.likeCount}} >  </view>
             </wux-col>
         </wux-row>
 
-
-<wux-divider />
+ <wux-divider show-text="{{ false }}" />
 
 <!--评论  标题-->
 <wux-row>
@@ -87,7 +82,7 @@
                 <view class="placeholder green-font">|</view>
             </wux-col>
             <wux-col span="2">
-                <view class="placeholder">评价 3</view>
+                <view class="placeholder">评论 {{commentList.length}}</view>
             </wux-col>
             <wux-col span="9">
                 <view class="placeholder"></view>
@@ -96,37 +91,44 @@
 
 
 <!--一整个完整的评论-->
-<wux-row>
+<view class="comment" wx:for="{{commentList}}" wx:for-index="index" wx:for-item="clist" wx:key>
+  <view class="comment-main">
+    <wux-row>
             <wux-col span="11">
-               <wux-media thumb="../../image/person1.png" thumb-style="border-radius: 50%" title="小可爱                                                    8分钟前"></wux-media>
+               <wux-media thumb="{{clist.user.img}}" thumb-style="border-radius: 50%" title="{{clist.user.realName}}                                                    {{clist.createTime}}"></wux-media>
             </wux-col>
         </wux-row>
 
-<view style='margin-left:20%;'>
-能不能留个手机号？
+        <view style='margin-left:20%;' bindtap='replyComment' data-name='{{clist.user.realName}}' data-cid='{{clist.id}}' data-type="1" data-pid="{{clist.id}}">{{clist.content}}</view>
+  </view>
+
+  <view class="reply" wx:for="{{replyList}}" wx:key wx:for-index="c2" wx:for-item="reply">
+    <view  wx:if="{{reply.parentId == clist.id}}"> 
+              <view class="flex" bindtap='replyComment' data-name='{{reply.user.realName}}' data-cid='{{reply.id}}' data-type="2" data-pid="{{reply.parentId}}">
+                <view wx:if='{{reply.replyName != null}}'>{{reply.user.realName}} 回复 {{reply.replyName}}：{{reply.content}}</view>  
+                <block wx:else>
+                  <view>{{reply.user.realName}}：{{reply.content}}</view>
+                </block>
+              </view>
+            </view>
+  </view>
+
+ <wux-divider show-text="{{ false }}" />
 </view>
-<wux-divider />
 
-<wux-row>
-            <wux-col span="11">
-               <wux-media thumb="../../image/person2.png" thumb-style="border-radius: 50%" title="老可爱                               19分钟前"></wux-media>
-            </wux-col>
 
-        </wux-row>
 
-<!--引用评论-->
-<view class='reply'>小可爱  由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
 
-<!--当前评论-->
-<view class='currentComment'>
-请回复我。
+
+
+
 </view>
 
 <!-- 底部固定的评论编辑 -->
 <wux-divider />
 <wux-row>
             <wux-col span="8">
-                <view style='height:32rpx;line-height:32rpx' class="placeholder"><wux-input bindfocus='onCommentFocus' style='border="1" bordercolor="#000000"' placeholder="写评论">
+                <view style='height:32rpx;line-height:32rpx' class="placeholder"><wux-input bindfocus='onCommentFocus' style='border="1" bordercolor="#000000"' placeholder="说点什么吧">
                 <image style="width: 20px; height: 20px; margin-right: 5px" src="../../image/edit.png" />
                 </wux-input></view>
             </wux-col>
@@ -143,11 +145,9 @@
 
 <!-- 点击评论弹出框 -->
 <wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2" bind:closed="onClose2">
-    <wux-cell-group>
-          <wux-cell hover-class="none">
-                <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="写评论" />
+     <wux-cell hover-class="none">
+                <wux-input placeholder="{{placeholder}}" />
             </wux-cell>
-    </wux-cell-group>
      <wux-button block bindtap='sendComment' type="balanced">发布</wux-button>
 </wux-popup>
 

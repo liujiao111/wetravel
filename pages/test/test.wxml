@@ -1,0 +1,31 @@
+<view class="page">
+    <block wx:for="{{commentList}}" wx:for-index="index" wx:for-item="clist" wx:key>
+      <view class="cu-item" wx:if="{{clist.reply_id == null}}">
+        <view class="cu-avatar round" style="background-image:url({{clist.user.img}});"></view>
+        <view class='content'>
+          <view class='text-grey'>{{clist.user.realName}}</view>
+          <view class='text-gray text-content text-df margin-top-xs' bindtap='replyComment' data-name='{{clist.user.realName}}' data-cid='{{clist.id}}' data-type="1" data-pid="{{clist.id}}">
+            {{clist.content}}
+          </view>
+          <block wx:for="{{replyList}}" wx:key wx:for-index="c2" wx:for-item="reply"> 
+            <view  wx:if="{{reply.parentId == clist.id}}"> 
+              <view class="flex" bindtap='replyComment' data-name='{{reply.user.realName}}' data-cid='{{reply.id}}' data-type="2" data-pid="{{reply.parentId}}">
+                <view wx:if='{{reply.replyName != null}}'>{{reply.user.realName}} 回复 {{reply.replyName}}：</view>  
+                <block wx:else>
+                  <view>{{reply.user.realName}}：</view>
+                </block>
+                <view class='flex-sub'>{{reply.content}}</view>
+              </view>
+             
+            </view>
+         </block>
+          <view>
+            <view class='text-gray text-df'>{{clist.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+
+  

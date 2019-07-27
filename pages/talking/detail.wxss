@@ -1,9 +1,10 @@
 /* pages/talking/detail.wxss */
 
 .margin-detail{
-  margin-left:10px;
-  margin-right: 10rpx;
-  color:#555E6F
+    margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+   color: #808080
 }
 
 .small-font{

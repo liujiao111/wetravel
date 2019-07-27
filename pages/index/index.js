@@ -1,5 +1,6 @@
 import { $wuxCalendar } from '../../dist-wux/index'
-
+//获取应用实例
+const app = getApp();
 
 Page({
   /* 页面的初始数据*/
@@ -227,7 +228,7 @@ searchTalkingByParams : function(params) {
   console.log(params)
   var that = this
   wx.request({
-    url: 'http://localhost:8088/talking/page',
+    url: app.globalData.dataurl + '/talking/page',
     data: params,
     method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: {

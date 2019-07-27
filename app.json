@@ -16,6 +16,7 @@
     "pages/user/publish/publish",
     "pages/user/focus/focus",
     "pages/user/detail/detail",
+    "pages/test/test",
     "component/wx-index-list/wx-index-list"
   ],
   "window": {
@@ -28,6 +29,12 @@
     "selectedColor": "#35c8fb",
     "color": "#7f8389",
     "list": [
+      {
+        "selectedIconPath": "image/star-color.png",
+        "iconPath": "image/star.png",
+        "pagePath": "pages/test/test",
+        "text": "评论"
+      },
       {
         "selectedIconPath": "image/star-color.png",
         "iconPath": "image/star.png",
