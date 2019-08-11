@@ -1,4 +1,5 @@
 // pages/talking/detail.js
+import { $wuxToast } from '../../dist-wux/index'
 
 //获取应用实例
 const app = getApp();
@@ -15,16 +16,19 @@ Page({
     talkingId: '',
     commentList: [], //评论集合
     replyList: [], //评论回复集合
-    comment_text: null,
-    reply_id: 0,
+    comment_text: '',
+    reply_id: '',
     placeholder: '就不说一句吗？',
-    reply_id: 0,
-    now_reply_name: null,
+    reply_id: '',
+    now_reply_name: '',
     type: 0,
-    now_parent_id: 0,
-    now_reply: 0
-
-
+    now_parent_id: '',
+    now_reply: '',
+    showUserNoLoginTab: false,
+    commentInput:"",
+    userId: "",
+    likedColor: "#808080",
+    collectedColor: "#808080",
   },
 
   /**
@@ -32,15 +36,20 @@ Page({
    */
   onLoad: function (options) {
     console.log('appid:' + app.globalData.openid)
+    var userId = app.globalData.openid
     var id = options.id;
     this.setData({
-      talkingId: id
+      talkingId: id,
+      userId: userId
     })
     var that = this
 
     //获取动态详情
     wx.request({
       url: app.globalData.dataurl + '/talking/' + id,
+      data:{
+        userId: userId
+      },
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {
         'content-type': 'application/json'
@@ -53,7 +62,21 @@ Page({
           if (code) {
             that.setData({
               talking: data
+
             })
+            if(data.liked == true) {
+              that.setData({
+                likedColor: 'green'
+              })
+            }
+
+            if (data.collected == true) {
+              that.setData({
+                collectedColor: 'green'
+              })
+            }
+
+
           }
         } else {
           console.log("index.js wx.request CheckCallUser statusCode" + res.statusCode);
@@ -91,6 +114,32 @@ Page({
       
     })
 
+  },
+
+  getCommentsByTalkingId : function (id) {
+    var that = this
+    //获取动态评论
+    wx.request({
+      url: app.globalData.dataurl + '/talking/comment?talkingId=' + id,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/json'
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.statusCode == 200) {
+          var code = res.data.code
+          var data = res.data.data
+          var commentList = data.commentList;
+          var replyList = data.replyList;
+          that.setData({
+            commentList: commentList,
+            replyList: replyList
+          })
+
+        }
+      }
+
+    })
   },
 
   /**
@@ -152,21 +201,44 @@ Page({
     })
   },
 
+  getCommentInput:function(e){
+    console.log('输入：' + e.detail.value)
+      this.setData({
+        commentInput: e.detail.value
+      })
+  },
+
 /**
  * 发布评论
  */
   sendComment: function() {
-    //console.log("当前登录人：" + app.globalData.localUserInfo.)
-    console.log("发布评论")
+    var that = this
+    var userid = app.globalData.openid;
+    var talkingId = this.data.talkingId;
+    var now_reply = this.data.now_reply;
+    var now_reply_name = this.data.now_reply_name;
+    var now_parent_id = this.data.now_parent_id;
+
+    var content = this.data.commentInput
+    console.log('评论内容：' + content)
+
+    //TODO 增加评论
+
     this.setData({
       visible2: false,
     });
 
     var params = {
-      talkingId: this.data.talkingId,
-
+      talkingId: talkingId,
+      userId: userid,
+      parentId: now_parent_id,
+      replyId:now_reply,
+      replyName: now_reply_name,
+      content: content
     
     }
+
+    console.log(params)
 
     wx.request({
       url: app.globalData.dataurl + '/comment',
@@ -177,7 +249,8 @@ Page({
       },
       data: params,
       success:function(res) {
-
+        //加载最新的评论
+        that.getCommentsByTalkingId(talkingId)
       },
     })
   },
@@ -193,6 +266,16 @@ Page({
  * 回复评论
  */
   replyComment : function(e) {
+
+    var userid = app.globalData.openid;
+    console.log('当前登录用户openId：' + userid)
+    if (userid == null || userid == '') {
+      this.setData({
+        showUserNoLoginTab: true
+      })
+      return;
+    }
+
     var id = e.currentTarget.dataset.cid
     console.log("回复的ID：" + id)
     var name = e.currentTarget.dataset.name
@@ -202,7 +285,7 @@ Page({
     var parent_id = e.currentTarget.dataset.pid
     console.log("回复所属的PID：" + parent_id)
 
-    console.log('当前登录用户openId：' + app.globalData.openid)
+    
 
     this.setData({
       now_reply: id,
@@ -213,8 +296,90 @@ Page({
       visible2: true,
     })
 
-    //TODO 增加评论
-
+    
     
   },
+
+  closeNoLoginTab:function(){
+    this.setData({
+      showUserNoLoginTab: false
+    })
+  },
+  onCloseNoLoginTab: function () {
+    console.log('点击确认，关闭')
+  },
+
+
+/**
+ * 收藏动态
+ */
+  collectTalking : function() {
+    console.log('收藏：' + this.data.talkingId)
+    var that = this
+    var collectedColor = that.data.collectedColor
+    if (collectedColor == "#808080") {
+      that.setData({
+        collectedColor: "green"
+      })
+    } else {
+      that.setData({
+        collectedColor: "#808080"
+      })
+    }
+
+    wx.request({
+      url: app.globalData.dataurl + '/talking/collect',
+      data: {
+        userId: that.data.userId,
+        talkingId:that.data.talkingId
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/json'
+      },// 设置请求的 header
+      success: function (res) {
+        
+      }
+    })
+
+  },
+
+/**
+ * 点赞动态
+ */
+  likeTalking:function() {
+    console.log('点赞：' + this.data.talkingId)
+    /**
+     * likedColor: "#808080",
+    collectedColor: "#808080",
+     */
+    var that = this
+    var likeColor = that.data.likedColor
+    if (likeColor == "#808080") {
+      that.setData({
+        likedColor:"green"
+      })
+    } else{
+      that.setData({
+        likedColor: "#808080"
+      })
+    }
+
+    wx.request({
+      url: app.globalData.dataurl + '/talking/like',
+      data: {
+        userId: that.data.userId,
+        talkingId: that.data.talkingId
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/json'
+      },// 设置请求的 header
+      success: function (res) {
+        
+      }
+    })
+    
+  },
+
 })

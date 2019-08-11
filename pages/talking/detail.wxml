@@ -1,5 +1,10 @@
 <view class="page margin-detail">
 
+
+<wux-popup closable visible="{{ showUserNoLoginTab }}" title="提示" content="请先登录后再操作" bind:close="closeNoLoginTab" bind:closed="onCloseNoLoginTab">
+    <view slot="footer" class="popup__button" bindtap="close1">OK</view>
+</wux-popup>
+
   
 <!--一条完整的动态-->
 <view class="talking">
@@ -133,10 +138,10 @@
                 </wux-input></view>
             </wux-col>
             <wux-col span="2" >
-                <view class="placeholder"><wux-icon type="md-star-outline" color='green'/></view>
+                <view class="placeholder"><wux-icon type="md-star-outline" color='{{collectedColor}}' bindtap="collectTalking"/></view>
             </wux-col>
             <wux-col span="1">
-                <view class="placeholder"> <wux-icon type="md-thumbs-up"/></view>
+                <view class="placeholder"> <wux-icon type="md-thumbs-up" color='{{likedColor}}'  bindtap="likeTalking"/></view>
             </wux-col>
         </wux-row>
 
@@ -146,12 +151,12 @@
 <!-- 点击评论弹出框 -->
 <wux-popup closable position="bottom" visible="{{ visible2 }}" bind:close="onClose2" bind:closed="onClose2">
      <wux-cell hover-class="none">
-                <wux-input placeholder="{{placeholder}}" />
+                <wux-input placeholder="{{placeholder}}" bind:blur="getCommentInput"/>
             </wux-cell>
      <wux-button block bindtap='sendComment' type="balanced">发布</wux-button>
 </wux-popup>
 
-
+<wux-button block type="light" bind:click="showToast">Success</wux-button>
 
 
 </view>

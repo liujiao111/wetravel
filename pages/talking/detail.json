@@ -19,6 +19,7 @@
     "wux-avatar": "../../dist-wux/avatar/index",
     "wux-image": "../../dist-wux/image/index",
     "wux-popup": "../../dist-wux/popup/index",
-    "wux-media": "../../dist-wux/media/index"
+    "wux-media": "../../dist-wux/media/index",
+    "wux-toast": "../../dist-wux/toast/index"
   }
 }
