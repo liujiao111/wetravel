@@ -1,18 +1,53 @@
+//获取应用实例
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    likeUsers:[], //点赞人列表
+    talkingId : '',
   },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('页面加载中....')
+    
+    var userId = app.globalData.openid
+    var talkingId = options.id
+    var that = this
+    that.setData({
+      talkingId: talkingId
+
+    })
+    var that = this
+    //获取点赞人列表
+    wx.request({
+      url: app.globalData.dataurl + '/talking/like/' + talkingId,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/json'
+      },// 设置请求的 header
+      data: {
+        userId: userId,
+        size: 10
+      },
+      success: function (res) {
+        var likeUsers = res.data.data
+        console.log(likeUsers)
+        that.setData({
+          likeUsers: likeUsers
+
+        })
+      }
+    })
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -61,5 +96,48 @@ Page({
    */
   onShareAppMessage: function () {
     
-  }
+  },
+
+/**
+ * 添加关注
+ */
+  addUserFocus:function(e) {
+    var soucreUserId = app.globalData.openid
+    var targetUserId = e.currentTarget.dataset.uid
+    var talkingId = this.data.talkingId
+    console.log('source:' + soucreUserId)
+    console.log('target:' + targetUserId)
+    var that = this
+    wx.request({
+      url :app.globalData.dataurl + '/user/addfocus',
+      data:{
+        sourceUserId: soucreUserId,
+        targetUserId: targetUserId
+      },
+      success:function(e) {
+        
+        //获取点赞人列表
+        wx.request({
+          url: app.globalData.dataurl + '/talking/like/' + talkingId,
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            'content-type': 'application/json'
+          },// 设置请求的 header
+          data: {
+            userId: soucreUserId,
+            size: 10
+          },
+          success: function (res) {
+            var likeUsers = res.data.data
+            console.log(likeUsers)
+            that.setData({
+              likeUsers: likeUsers
+            })
+          }
+        })
+      }
+    })
+
+
+  },
 })

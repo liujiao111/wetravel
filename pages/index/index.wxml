@@ -48,7 +48,7 @@
 
 <wux-row>
             <wux-col span="1">
-                <view class="placeholder"><wux-avatar size="large"  bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="../../image/person3.png" /></view>
+                <view class="placeholder"><wux-avatar size="large"  bodyStyle = "margin-left:10rpx;margin-top:20rpx" src="{{item.img}}" /></view>
             </wux-col>
             <wux-col span="7">
                 <view class="placeholder">

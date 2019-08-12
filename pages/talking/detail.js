@@ -29,6 +29,7 @@ Page({
     userId: "",
     likedColor: "#808080",
     collectedColor: "#808080",
+    userImages: [],//点赞人用户头像
   },
 
   /**
@@ -90,6 +91,25 @@ Page({
         console.log('complete')
       }
     });
+
+
+    //获取点赞人列表
+    wx.request({
+      url: app.globalData.dataurl + '/talking/like/' + id,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        'content-type': 'application/json'
+      },// 设置请求的 header
+      data:{
+        userId: userId
+      },
+      success:function(res) {
+        var userImages = res.data.data
+        that.setData({
+          userImages: userImages
+        })
+      }
+    })
 
     //获取动态评论
     wx.request({
@@ -256,8 +276,9 @@ Page({
   },
 
   toLikeListView:function(){
+    var talkingId = this.data.talkingId
     wx.navigateTo({
-      url: '/pages/talking/like',
+      url: '/pages/talking/like?id=' + talkingId,
       success: function () { }        //成功后的回调；
     })
   },

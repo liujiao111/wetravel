@@ -68,10 +68,8 @@
 <!--点赞列表-->
  <wux-row bindtap='toLikeListView'>
             <wux-col span="9">
-                <view class="placeholder">
-                  <wux-avatar size="default" src="../../image/person1.png" />
-                  <wux-avatar size="default" src="../../image/person2.png" />
-                  <wux-avatar size="default" src="../../image/person3.png" />
+                <view >
+                  <wux-avatar wx:for='{{userImages}}' wx:for-item="item" size="default" src="{{item.img}}" />
                 </view>
             </wux-col>
             <wux-col span="3">
@@ -155,8 +153,6 @@
             </wux-cell>
      <wux-button block bindtap='sendComment' type="balanced">发布</wux-button>
 </wux-popup>
-
-<wux-button block type="light" bind:click="showToast">Success</wux-button>
 
 
 </view>
